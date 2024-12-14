@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-ui
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: hello-ui
+  template:
+    metadata:
+      labels:
+        app: hello-ui
+    spec:
+      containers:
+        - image: node:20-alpine
+          name: hello-ui
+          ports:
+            - containerPort: 80
